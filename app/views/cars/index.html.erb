@@ -1,4 +1,6 @@
 <h1>Cars</h1>
+<%= link_to "Add a manufacturer", new_manufacturer_path %>
+<%= link_to "List manufacuters", manufacturers_path %>
 <ul>
     <% @cars.each do |car| %>
         <li>

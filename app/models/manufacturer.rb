@@ -1,5 +1,9 @@
 class Manufacturer < ApplicationRecord
+  has_many :cars
+
   before_save :set_default_email
+
+  validates :name, presence: true
 
   private
 
