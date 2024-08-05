@@ -1,6 +1,6 @@
 <h1> <%= @manufacturer.name %> </h1>
 
 <h2>Cars</h2>
-<%= render @manufacturer.cars %>
+<%= render partial: 'cars/car_list', locals: {cars: @cars} %>
 
 <footer>This is a manufacturer</footer>
