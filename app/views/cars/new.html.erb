@@ -20,7 +20,9 @@
 
   <div>
     <%= form.label :manufacturer_id %>
-    <%= form.select :manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name), { prompt: 'Select a Manufacturer' } %>
+    <%= form.select :manufacturer_id,
+        options_from_collection_for_select(Manufacturer.all, :id, :name),
+        { prompt: 'Select a Manufacturer' } %>
   </div>
 
   <div>
