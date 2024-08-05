@@ -1,53 +1,6 @@
 <!-- app/views/cars/_form.html.erb -->
 <h1>New car</h1>
 
-<%= form_with(model: @car, local: true) do |form| %>
-  <% if @car.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
-      <ul>
-        <% @car.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :manufacturer_id %>
-    <%= form.select :manufacturer_id,
-        options_from_collection_for_select(Manufacturer.all, :id, :name),
-        { prompt: 'Select a Manufacturer' } %>
-  </div>
-
-  <div>
-    <%= form.label :engine %>
-    <%= form.text_field :engine %>
-  </div>
-
-  <div>
-    <%= form.label :transmission %>
-    <%= form.text_field :transmission %>
-  </div>
-
-  <div>
-    <%= form.label :horsepower %>
-    <%= form.number_field :horsepower %>
-  </div>
-
-  <div>
-    <%= form.label :released_at %>
-    <%= form.date_select :released_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "form", car: @car %>
 
 <%= link_to 'Back', cars_path %>

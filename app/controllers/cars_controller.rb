@@ -21,10 +21,22 @@ class CarsController < ApplicationController
     end
   end
 
+  def edit
+    @car = Car.find(params[:id])
+  end
 
+  def update
+    @car = Car.find(params[:id])
+
+    if @car.update(car_params)
+      redirect_to @car
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   private
     def car_params
-      params.require(:car).permit(:name, :manufacturer_id, :engine, :transmission, :horsepower, :released_at)
+      params.require(:car).permit(:name, :car_id, :engine, :transmission, :horsepower, :released_at)
     end
 end

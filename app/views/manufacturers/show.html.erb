@@ -1,4 +1,7 @@
 <h1> <%= @manufacturer.name %> </h1>
+<ul>
+    <li><%= link_to "Edit manufacturer", edit_manufacturer_path(@manufacturer) %></li>
+</ul>
 
 <h2>Cars</h2>
 <%= render partial: 'cars/car_list', locals: {cars: @cars} %>

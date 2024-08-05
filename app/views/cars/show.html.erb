@@ -1,2 +1,8 @@
 <!-- app/views/cars/show.html.erb -->
 <%= render 'car', car: @car %>
+
+<ul>
+    <li><%= link_to "Edit car", edit_car_path(@car) %></li>
+</ul>
+
+<%= link_to 'Back', cars_path %>
