@@ -1,8 +1,6 @@
 <h1>All Manufacturers</h1>
-<ul>
-  <% @manufacturers.each do |manufacturer| %>
-    <li>
-        <%= link_to manufacturer.name, manufacturer %>
-    </li>
-  <% end %>
-</ul>
+<%= render partial: 'manufacturers/manufacturers', locals: {manufacturers: @manufacturers} %>
+
+<footer>
+  <%= link_to 'Archived manufacturers', archived_manufacturers_path %>
+</footer>

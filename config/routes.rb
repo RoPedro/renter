@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   root "cars#index"
 
-  resources :manufacturers
+  resources :manufacturers do
+    member do
+      post :archive
+    end
+    collection do
+      get :archived
+    end
+  end
   resources :cars
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

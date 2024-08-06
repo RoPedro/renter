@@ -1,4 +1,7 @@
 class Manufacturer < ApplicationRecord
+  scope :active, -> { where(is_archived: false) }
+  scope :archived, -> { where(is_archived: true) }
+  
   has_many :cars
 
   before_save :set_default_email

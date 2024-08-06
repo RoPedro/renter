@@ -1,13 +1,23 @@
 class ManufacturersController < ApplicationController
   def index
-    @manufacturers = Manufacturer.all
+    @manufacturers = Manufacturer.where(is_archived: false)
+  end
+
+  def archived
+    @manufacturers = Manufacturer.where(is_archived: true)
   end
   
   def show
-    @manufacturer = Manufacturer.find(params[:id])
-    @cars = @manufacturer.cars
+    @manufacturer = Manufacturer.find_by(id: params[:id], is_archived: params[:show_archived] == 'true')
+  
+    if @manufacturer
+      @cars = @manufacturer.cars
+    else
+      flash[:alert] = "Manufacturer not found."
+      redirect_to manufacturers_path
+    end
   end
-
+  
   def new
     @manufacturer = Manufacturer.new
   end
@@ -37,6 +47,16 @@ class ManufacturersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def archive
+    @manufacturer = Manufacturer.find(params[:id])
+    if @manufacturer.update(is_archived: true)
+      flash[:notice] = 'Manufacturer archived successfully'
+    else
+      flash[:alert] = 'Error archiving manufacturer'
+    end
+    redirect_to manufacturers_path
   end
   
   private
