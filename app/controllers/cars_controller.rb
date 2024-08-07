@@ -1,6 +1,8 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = Car.joins(:manufacturer).where(
+      is_archived: false,
+      manufacturers: { is_archived: false })
   end
 
   def show
