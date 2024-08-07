@@ -1,6 +1,5 @@
 class Manufacturer < ApplicationRecord
-  scope :active, -> { where(is_archived: false) }
-  scope :archived, -> { where(is_archived: true) }
+  after_initialize :set_default_is_archived, if: :new_record?
   
   has_many :cars
 
@@ -14,5 +13,9 @@ class Manufacturer < ApplicationRecord
     if self.email.nil? || self.email.strip.empty?
       self.email = "#{self.name.downcase.gsub(' ', '_')}@support.com"
     end
+  end
+
+  def set_default_is_archived
+    self.is_archived ||= false
   end
 end
