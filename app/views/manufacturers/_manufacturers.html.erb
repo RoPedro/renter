@@ -1,7 +1,7 @@
 <ul>
   <% @manufacturers.each do |manufacturer| %>
     <li>
-        <%= link_to manufacturer.name, manufacturer %>
+        <%= link_to manufacturer.name, manufacturer_path(manufacturer, show_archived: manufacturer.is_archived) %>
     </li>
   <% end %>
 </ul>
