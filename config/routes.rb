@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :manufacturers do
     member do
       post :archive
+      post :unarchive
     end
     collection do
       get :archived

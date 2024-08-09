@@ -6,6 +6,11 @@
       <%= form.submit "Archive manufacturer" %>
     <% end %>
   </li>
+  <li>
+    <%= form_with(model: @manufacturer, url: unarchive_manufacturer_path(@manufacturer), method: :post) do |form| %>
+      <%= form.submit "Unarchive manufacturer" %>
+    <% end %>
+  </li>
 </ul>
 
 

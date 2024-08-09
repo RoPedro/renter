@@ -58,6 +58,17 @@ class ManufacturersController < ApplicationController
     end
     redirect_to manufacturers_path
   end
+
+  def unarchive
+    @manufacturer = Manufacturer.find(params[:id])
+
+    if @manufacturer.is_archived
+      @manufacturer.update(is_archived: false)
+      redirect_to manufacturers_path, notice: 'Manufacturer has been unarchived'
+    else
+      redirect_to manufacturers_path, alert: 'Manufacturer is not archived, nothing to do'
+    end
+  end
   
   private
     def manufacturer_params
