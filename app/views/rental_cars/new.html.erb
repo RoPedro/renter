@@ -2,4 +2,4 @@
 
 <%= render "form", rental_car: @rental_car %>
 
-<%= link_to 'Back', cars_path %>
+<%= link_to 'Back', car_path(@rental_car.car_id) %>

@@ -3,7 +3,7 @@
 
 <ul>
     <li><%= link_to "Edit car", edit_car_path(@car) %></li>
-    <li><%= link_to "Add rental car", new_rental_car_path(@rental_car) %></li>
+    <li><%= link_to "Add rental car", new_rental_car_path(car_id: @car.id) %></li>
 </ul>
 
 <%= link_to "Go to #{@car.manufacturer.name}", @car.manufacturer %>

@@ -1,0 +1,14 @@
+<!-- app/views/rental_cars/show.html.erb -->
+<h1>Rental Car Details</h1>
+
+<p>
+  <strong>License Plate:</strong>
+  <%= @rental_car.license_plate %>
+</p>
+
+<p>
+  <strong>Associated Car:</strong>
+  <%= link_to "#{@rental_car.car.manufacturer.name} #{@rental_car.car.name}", car_path(@rental_car.car) %>
+</p>
+
+<%= link_to 'Back', cars_path %>
