@@ -1,0 +1,15 @@
+<%= form_with model: @rental_car do |form| %>
+  <div>
+    <%= form.label :license_plate %><br>
+    <%= form.text_field :license_plate %>
+    <% @rental_car.errors.full_messages_for(:license_plate).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <%= form.hidden_field :car_id, value: @rental_car.car_id %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

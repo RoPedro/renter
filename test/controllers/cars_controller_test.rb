@@ -2,7 +2,7 @@ require "test_helper"
 
 class CarsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get cars_index_url
+    get cars_path
     assert_response :success
   end
 end
