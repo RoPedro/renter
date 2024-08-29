@@ -1,17 +1,25 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  engine: MyString
-  transmission: MyString
-  horsepower: 1
-  released_at: 2024-08-01
+  name: Octavia
+  engine: 1.9L Four-cylinder Diesel
+  transmission: 5-speed Automatic
+  horsepower: 100
+  released_at: 1959-08-01
   manufacturer: one
 
 two:
-  name: MyString
-  engine: MyString
-  transmission: MyString
-  horsepower: 1
+  name: Superbird
+  engine: 7.0L V8
+  transmission: 4-speed manual
+  horsepower: 425
+  released_at: 2024-08-01
+  manufacturer: two
+
+three:
+  name: Road Runner
+  engine: 7.0L V8
+  transmission: 4-speed manual
+  horsepower: 425
   released_at: 2024-08-01
   manufacturer: two

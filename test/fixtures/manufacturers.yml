@@ -1,11 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  email: MyString
+  name: Skoda
+  email: skoda@support.com 
   is_archived: false
 
 two:
-  name: MyString
-  email: MyString
-  is_archived: false
+  name: Plymouth
+  email: plymouth@support.com
+  is_archived: true
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
