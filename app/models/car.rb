@@ -8,6 +8,6 @@ class Car < ApplicationRecord
     self.is_archived ||= false
   end
 
-  validates :name, presence:true
+  validates :name, presence:true, uniqueness: true
   validates :manufacturer, presence: true
 end
