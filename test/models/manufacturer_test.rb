@@ -2,22 +2,21 @@ require "test_helper"
 
 class ManufacturerTest < ActiveSupport::TestCase
   def setup
-    @dummyManufacturer = Manufacturer.create(name: "Manufacturer")
+    @manufacturer = manufacturers(:one)
   end
 
   test "should not save manufacturer without a name" do
     dummyManufacturer2 = Manufacturer.new(name: nil)
-    assert_not dummyManufacturer2.save
+    assert_not dummyManufacturer2.save, "Saved manufacturer without a name"
   end
 
   test "should not save manufacturer with the same name" do
-    dummyManufacturer3 = Car.new(name: @dummyManufacturer.name) 
-    assert_not dummyManufacturer3.save, "Saved the car with the same name"
+    dummyManufacturer3 = Car.new(name: @manufacturer.name) 
+    assert_not dummyManufacturer3.save, "Saved manufacturer with the same name"
   end
 
   test "valid manufacturer" do
-    dummyManufacturer4 = Manufacturer.new(name: "Plymouth", email: "plymouth@support.com")
-    assert dummyManufacturer4.valid?
+    assert @manufacturer.valid?
   end
 end
 
