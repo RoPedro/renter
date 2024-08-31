@@ -1,6 +1,7 @@
 class RentalCarsController < ApplicationController
   def index
-    @rental_cars = RentalCar.all
+    @rental_cars = RentalCar.joins(car: :manufacturer).where(
+      manufacturers: { is_archived: false })
   end
 
   def show
