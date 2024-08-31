@@ -5,7 +5,7 @@ class Manufacturer < ApplicationRecord
 
   before_save :set_default_email
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   private
 
