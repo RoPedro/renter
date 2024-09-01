@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "cars#index"
-
+  root 'welcome#index'
+  
   resources :manufacturers do
     member do
       post :archive
