@@ -1,18 +1,3 @@
 <h1>Available rentals</h1>
 
-<table>
-    <tr>
-        <th>Vehicle</th>
-        <th>License plate</th>
-    </tr>
-    <% if @rental_cars.present? %>
-        <% @rental_cars.each do |rental_car| %>
-            <tr>
-                <td><%= rental_car.car.manufacturer.name %> <%= rental_car.car.name %></td>
-                <td><%= rental_car.license_plate %></td>
-            </tr>
-        <% end %>
-    <% else %>
-        <td colspan="2">No rentals available</td>
-    <% end %>
-</table>
+<%= render partial: 'rental_cars/rental_list', locals: {rental_cars: @rental_cars} %>
