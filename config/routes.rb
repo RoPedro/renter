@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   
+  resources :welcome
   resources :manufacturers do
     member do
       post :archive
