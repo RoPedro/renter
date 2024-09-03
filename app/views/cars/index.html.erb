@@ -2,8 +2,4 @@
 
 <%= render partial: 'cars/car_list', locals: {cars: @cars} %>
 
-<%= link_to "All available rentals", rental_cars_path %>
-<%= link_to "Add a manufacturer", new_manufacturer_path %>
-<%= link_to "List manufacuters", manufacturers_path %>
-<%= link_to "Add a car", new_car_path %>
-
+<%= link_to "Back", welcome_index_path %> <!-- Using welcome index path because rails defaults welcome_path to show, not index-->
