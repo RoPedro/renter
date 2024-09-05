@@ -3,9 +3,10 @@
 
 <ul>
     <li><%= link_to "Edit client", edit_client_path(@client) %></li>
-    <li><%= link_to "Destroy client", client_path(@client), data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-    } %></li>
+    <li>
+        <%= form_with url: client_path(@client), method: :delete do %> 
+            <%= submit_tag "Destroy client", data: { confirm: "Are you sure?" } %> 
+        <% end %>
+    </li>
 </ul>
 
