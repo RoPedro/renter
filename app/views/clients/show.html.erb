@@ -1,0 +1,12 @@
+<h1><%= @client.first_name %> <%= @client.last_name %></h1>
+<h3><%= @client.email %></h3>
+
+<ul>
+    <li><%= link_to "Edit client", edit_client_path(@client) %></li>
+    <li>
+        <%= form_with url: client_path(@client), method: :delete do %> 
+            <%= submit_tag "Destroy client", data: { confirm: "Are you sure?" } %> 
+        <% end %>
+    </li>
+</ul>
+

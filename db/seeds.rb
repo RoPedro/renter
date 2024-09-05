@@ -44,3 +44,10 @@ RentalCar.create!([
   { license_plate: "CCC3D44", car: Car.find_by(name: "458") },
   { license_plate: "DDD4E55", car: Car.find_by(name: "Phantom") }
 ])
+
+Client.create!([
+  { first_name: "Peter", last_name: "Parker", email: "peterparker@brooklyn.com" },
+  { first_name: "Clark", last_name: "Kent", email: "clarkkent@krypton.com" },
+  { first_name: "Mikasa", last_name: "Ackerman", email: "mikasa_arckerman@paradis.com" },
+  { first_name: "Amy", last_name: "Rose", email: "amyrose@greenhill.com" }
+])
