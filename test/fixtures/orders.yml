@@ -3,7 +3,26 @@
 one:
   client: one
   rental_car: one
+  status: pending
+  return_until: 2024-08-01
+  returned_at: null
+  created_at: 2024-07-01
+  updated_at: 2022-08-01
 
 two:
   client: two
   rental_car: two
+  status: returned
+  return_until: 2024-08-01
+  returned_at: 2024-08-01 
+  created_at: 2024-07-01
+  updated_at: 2022-08-01
+
+three:
+  client: two
+  rental_car: three 
+  status: pending 
+  return_until: 2024-08-01
+  returned_at: null 
+  created_at: 2024-07-01
+  updated_at: 2022-08-01
