@@ -6,7 +6,7 @@ class RentalCar < ApplicationRecord
   enum status: { available: 'available', rented: 'rented', maintenance: 'maintenance', retired: 'retired' }
 
   validates :license_plate, :status, presence: true
-  validate :status_must_be_available
+  validate :status_must_be_available, on: :create
 
   private
 
