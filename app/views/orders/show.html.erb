@@ -1,0 +1,8 @@
+<h1>Order ID: <%= @order.id %></h1>
+<ul>
+    <li><h3>Rental: <%= @order.rental_car.car.manufacturer.name %> <%= @order.rental_car.car.name %></h3></li>
+    <li><h3>Client: <%= @order.client.first_name %> <%= @order.client.last_name %></h3></li>
+    <li><h3>Status: <%= @order.status %></h3></li>
+    <li><h3>Return until: <%= @order.return_until %></h3></li>
+    <li><h3>Returned at: <%= @order.returned_at %></h3></li>
+</ul>
