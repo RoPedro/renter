@@ -6,3 +6,11 @@
     <li><h3>Return until: <%= @order.return_until %></h3></li>
     <li><h3>Returned at: <%= @order.returned_at %></h3></li>
 </ul>
+
+<%= form_with(model: @order, url: return_order_path(@order), method: :post) do |form| %>
+    <%= form.submit "Mark as returned" %>
+<% end %>
+
+<%= form_with url: order_path(@order), method: :delete do %> 
+    <%= submit_tag "Destroy order", data: { confirm: "Are you sure?" } %> 
+<% end %>
