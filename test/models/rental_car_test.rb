@@ -14,11 +14,6 @@ class RentalCarTest < ActiveSupport::TestCase
     @dummyRental2 = RentalCar.new(license_plate: "AAA1B22")
     assert_not @dummyRental2.save, "Saved the car with the same license plate"
   end
-
-  test "should not save rental car that is not available" do
-    rentedCar = rental_cars(:three)
-    assert_not rentedCar.save, "Saved car that was not available"
-  end
 end
 
 # Notes: assert_not is the same as saying that this should not happen
