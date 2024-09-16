@@ -1,0 +1,40 @@
+<%= form_with(model: @order, local: true) do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :client_id %>
+    <%= form.select :client_id,
+        options_from_collection_for_select(Client.all.map { |client| [
+          "#{client.first_name} #{client.last_name}", client.id ] }, :second, :first),
+        { prompt: 'Select a Client' } %>
+  </div>
+
+  <div>
+    <%= form.label :rental_car_id %>
+    <%= form.select :rental_car_id,
+        options_from_collection_for_select(RentalCar.where(status: 'available').map { |rental| [
+          "#{rental.car.manufacturer.name} #{rental.car.name}", rental.id
+        ] }, :second, :first),
+        { prompt: 'Select a Rental' } %>
+  </div>
+
+  <div>
+    <%= form.label :return_until, "Return Until" %>
+    <%= date_select :return_until, :order => [:month, :day, :year], prompt: {
+      month: 'Select month', day: 'Select day', year: 'Select year' 
+    }%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
