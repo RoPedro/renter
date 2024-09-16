@@ -51,3 +51,14 @@ Client.create!([
   { first_name: "Mikasa", last_name: "Ackerman", email: "mikasa_arckerman@paradis.com" },
   { first_name: "Amy", last_name: "Rose", email: "amyrose@greenhill.com" }
 ])
+
+Order.create!([
+  { rental_car: RentalCar.find_by(license_plate: "AAA1B22"), client: Client.find_by(first_name: "Peter"), status: "pending", return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "BBB2C33"), client: Client.find_by(first_name: "Clark"), status: "pending", return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "CCC3D44"), client: Client.find_by(first_name: "Mikasa"), status: "pending", return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "DDD4E55"), client: Client.find_by(first_name: "Amy"), status: "returned", return_until: Date.today, returned_at: Date.today }
+])
+
+Order.where(status: "pending").each do |order|
+  order.rental_car.update!(status: "rented")
+end
