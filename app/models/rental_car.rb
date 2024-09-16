@@ -1,7 +1,9 @@
 class RentalCar < ApplicationRecord
   belongs_to :car
+  has_many :orders
+  has_many :clients, through: :orders
 
-  private
+  enum status: { available: 'available', rented: 'rented', maintenance: 'maintenance', retired: 'retired' }
 
-  validates :license_plate, presence: true
+  validates :license_plate, :status, presence: true
 end

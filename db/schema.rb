@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_22_010422) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_06_132956) do
   create_table "cars", force: :cascade do |t|
     t.string "name"
     t.string "engine"
@@ -40,14 +40,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_010422) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "rental_car_id", null: false
+    t.string "status"
+    t.datetime "return_until"
+    t.datetime "returned_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["rental_car_id"], name: "index_orders_on_rental_car_id"
+  end
+
   create_table "rental_cars", force: :cascade do |t|
     t.string "license_plate", null: false
     t.integer "car_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "available"
     t.index ["car_id"], name: "index_rental_cars_on_car_id"
   end
 
   add_foreign_key "cars", "manufacturers"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "rental_cars"
   add_foreign_key "rental_cars", "cars"
 end

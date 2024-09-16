@@ -2,13 +2,17 @@
     <tr>
         <th>Vehicle</th>
         <th>License plate</th>
+        <th>Status</th>
     </tr>
     <% if @rental_cars.present? %>
         <% @rental_cars.each do |rental_car| %>
-            <tr>
-                <td><%= rental_car.car.manufacturer.name %> <%= rental_car.car.name %></td>
-                <td><%= rental_car.license_plate %></td>
-            </tr>
+            <% if rental_car.status == "available"%>
+                <tr>
+                    <td><%= rental_car.car.manufacturer.name %> <%= rental_car.car.name %></td>
+                    <td><%= rental_car.license_plate %></td>
+                    <td><%= rental_car.status%></td>
+                </tr>
+            <% end %>
         <% end %>
     <% else %>
         <td colspan="2">No rentals available</td>

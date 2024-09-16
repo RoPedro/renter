@@ -7,3 +7,8 @@ one:
 two:
   license_plate: ASD9F23
   car: two
+
+three:
+  license_plate: VSR4I29
+  status: rented
+  car: two
