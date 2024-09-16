@@ -13,10 +13,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @rental_car = @order.rental_car
-    @rental_car.status = "rented"
+    
+    if @order.save
+      @rental_car = @order.rental_car
+      @rental_car.status = "rented"
+      @rental_car.save # We need to alter the rental status before saving the order
 
-    if @order.save && @rental_car.save
       flash[:success] = "Order successfully created"
       redirect_to @order
     else
@@ -24,14 +26,32 @@ class OrdersController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    @order = Order.find(params[:id])
+    if @order.destroy
+      flash[:success] = 'Order was successfully deleted.'
+      redirect_to orders_path
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to orders_path 
+    end
+  end
   
   def return
     @order = Order.find(params[:id])
-    @order.status = "returned"
-    @order.returned_at = Time.now
+    if @order.status == "returned"
+      flash[:error] = "Order already returned"
+    else
+      @order.status = "returned"
+      @order.returned_at = Time.now
+    end
 
     if @order.save
       flash[:success] = "Order successfully returned"
+      @rental_car = @order.rental_car
+      @rental_car.status = "available"
+      rental_car.save
       redirect_to @order
     else
       flash[:error] = "Something went wrong"
