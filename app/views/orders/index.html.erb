@@ -1,3 +1,5 @@
+<h1>All orders</h1>
+
 <ul>
     <% @orders.each do |order| %>
         <li>
@@ -5,3 +7,5 @@
         </li>
     <% end %>
 </ul>
+
+<%= link_to "Register new order", new_order_path %>
