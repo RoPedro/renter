@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :client
   belongs_to :rental_car
-  validate :rental_must_be_available
+  validate :rental_must_be_available, on: create 
 
   enum status: { pending: 'pending', returned: 'returned' }
 
