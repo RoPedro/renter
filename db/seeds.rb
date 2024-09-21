@@ -11,7 +11,7 @@
 # Creating some manufacturers
 Manufacturer.create!([
   { name: "Porsche", email: "porsche@support.com", is_archived: false },
-  { name: "Ferrari", email: "ferrari@support.com", is_archived: true },
+  { name: "Ferrari", email: "ferrari@support.com", is_archived: false },
   { name: "Rolls Royce", email: "", is_archived: false }
 ])
 
@@ -53,12 +53,12 @@ Client.create!([
 ])
 
 Order.create!([
-  { rental_car: RentalCar.find_by(license_plate: "AAA1B22"), client: Client.find_by(first_name: "Peter"), status: "pending", return_until: Date.today },
-  { rental_car: RentalCar.find_by(license_plate: "BBB2C33"), client: Client.find_by(first_name: "Clark"), status: "pending", return_until: Date.today },
-  { rental_car: RentalCar.find_by(license_plate: "CCC3D44"), client: Client.find_by(first_name: "Mikasa"), status: "pending", return_until: Date.today },
-  { rental_car: RentalCar.find_by(license_plate: "DDD4E55"), client: Client.find_by(first_name: "Amy"), status: "returned", return_until: Date.today, returned_at: Date.today }
+  { rental_car: RentalCar.find_by(license_plate: "AAA1B22"), client: Client.find_by(first_name: "Peter"), status: :pending, return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "BBB2C33"), client: Client.find_by(first_name: "Clark"), status: :pending, return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "CCC3D44"), client: Client.find_by(first_name: "Mikasa"), status: :pending, return_until: Date.today },
+  { rental_car: RentalCar.find_by(license_plate: "DDD4E55"), client: Client.find_by(first_name: "Amy"), status: :returned, return_until: Date.today, returned_at: Date.today }
 ])
 
-Order.where(status: "pending").each do |order|
-  order.rental_car.update!(status: "rented")
+Order.where(status: :pending).each do |order|
+  order.rental_car.rented!
 end
