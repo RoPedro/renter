@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     
     if @order.save
       @rental_car = @order.rental_car
-      @rental_car.status = "rented"
+      @rental_car.rented!
       @rental_car.save # We need to alter the rental status before saving the order
 
       flash[:success] = "Order successfully created"
@@ -48,17 +48,18 @@ class OrdersController < ApplicationController
     end
 
     if @order.save
-      flash[:success] = "Order successfully returned"
       @rental_car = @order.rental_car
-      @rental_car.status = "available"
-      rental_car.save
-      redirect_to @order
+      @rental_car.available!
+      flash[:success] = "Order successfully returned"
+      @rental_car.save
+      
+      redirect_to orders_path and return
     else
       flash[:error] = "Something went wrong"
       render 'show'
     end
   end 
-  
+
   private
 
   def order_params
